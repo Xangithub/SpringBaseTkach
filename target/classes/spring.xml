@@ -6,7 +6,7 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
         http://www.springframework.org/schema/util
- 		http://www.springframework.org/schema/util/spring-beans-3.2.xsd">
+ 		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
     <import resource="loggers.xml"/>
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -24,6 +24,7 @@
         <constructor-arg value="${name}"/>
         <property name="greeting" value="${greeting}"/>
     </bean>
+
     <bean id="client2" class="com.yet.spring.core.beans.Client">
         <constructor-arg value="2"/>
         <constructor-arg value="Makarov Pavel"/>
@@ -47,12 +48,12 @@
 
         </constructor-arg>
     </bean>
-<bean id="loggers" class="java.util.HashMap">
+
     <util:map id="loggers" map-class="java.util.HashMap">
         <entry key="INFO" value-ref="consoleEventLogger"/>
         <entry key="ERROR" value-ref="combinedEventLogger"/>
     </util:map>
-</bean>
+
     <bean id="app" class="com.yet.spring.core.App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="cacheFileLogger"/>
